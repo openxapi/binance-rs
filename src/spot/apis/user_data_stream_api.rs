@@ -11,7 +11,7 @@
 
 use reqwest;
 use serde::{Deserialize, Serialize, de::Error as _};
-use crate::{apis::ResponseContent, models};
+use crate::spot::{apis::ResponseContent, models};
 use super::{Error, configuration, ContentType};
 
 /// struct for passing parameters to the method [`spot_delete_user_data_stream_v3`]
@@ -61,9 +61,47 @@ pub async fn spot_create_user_data_stream_v3(configuration: &configuration::Conf
     let uri_str = format!("{}/api/v3/userDataStream", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
+    // Create a mutable vector for query parameters
+    let mut query_params: Vec<(String, String)> = Vec::new();
+
+
+    // Create header parameters collection
+    let mut header_params = std::collections::HashMap::new();
+
+    // Handle Binance Auth first if configured
+    if let Some(ref binance_auth) = configuration.binance_auth {
+        // Add API key to headers
+        header_params.insert("X-MBX-APIKEY".to_string(), binance_auth.api_key().to_string());
+        
+        // Generate request body for signing (if any)
+        let body_string: Option<Vec<u8>> = None;
+        
+        // Sign the request
+        let signature = match binance_auth.sign(Some(&query_params), body_string.as_deref()) {
+            Ok(sig) => sig,
+            Err(e) => return Err(Error::Generic(format!("Failed to sign request: {}", e))),
+        };
+        
+        // Add signature to query params
+        query_params.push(("signature".to_string(), signature));
+    }
+
+    // Apply all query parameters
+    if !query_params.is_empty() {
+        req_builder = req_builder.query(&query_params);
+    }
+
+
+    // Add user agent if configured
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
+
+    // Apply all header parameters
+    for (header_name, header_value) in header_params {
+        req_builder = req_builder.header(&header_name, &header_value);
+    }
+
     if let Some(ref apikey) = configuration.api_key {
         let key = apikey.key.clone();
         let value = match apikey.prefix {
@@ -104,10 +142,48 @@ pub async fn spot_delete_user_data_stream_v3(configuration: &configuration::Conf
     let uri_str = format!("{}/api/v3/userDataStream", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
 
-    req_builder = req_builder.query(&[("listenKey", &params.listen_key.to_string())]);
+    // Create a mutable vector for query parameters
+    let mut query_params: Vec<(String, String)> = Vec::new();
+
+    query_params.push(("listenKey".to_string(), params.listen_key.to_string()));
+
+    // Create header parameters collection
+    let mut header_params = std::collections::HashMap::new();
+
+    // Handle Binance Auth first if configured
+    if let Some(ref binance_auth) = configuration.binance_auth {
+        // Add API key to headers
+        header_params.insert("X-MBX-APIKEY".to_string(), binance_auth.api_key().to_string());
+        
+        // Generate request body for signing (if any)
+        let body_string: Option<Vec<u8>> = None;
+        
+        // Sign the request
+        let signature = match binance_auth.sign(Some(&query_params), body_string.as_deref()) {
+            Ok(sig) => sig,
+            Err(e) => return Err(Error::Generic(format!("Failed to sign request: {}", e))),
+        };
+        
+        // Add signature to query params
+        query_params.push(("signature".to_string(), signature));
+    }
+
+    // Apply all query parameters
+    if !query_params.is_empty() {
+        req_builder = req_builder.query(&query_params);
+    }
+
+
+    // Add user agent if configured
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
+
+    // Apply all header parameters
+    for (header_name, header_value) in header_params {
+        req_builder = req_builder.header(&header_name, &header_value);
+    }
+
     if let Some(ref apikey) = configuration.api_key {
         let key = apikey.key.clone();
         let value = match apikey.prefix {
@@ -148,9 +224,47 @@ pub async fn spot_update_user_data_stream_v3(configuration: &configuration::Conf
     let uri_str = format!("{}/api/v3/userDataStream", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
+    // Create a mutable vector for query parameters
+    let mut query_params: Vec<(String, String)> = Vec::new();
+
+
+    // Create header parameters collection
+    let mut header_params = std::collections::HashMap::new();
+
+    // Handle Binance Auth first if configured
+    if let Some(ref binance_auth) = configuration.binance_auth {
+        // Add API key to headers
+        header_params.insert("X-MBX-APIKEY".to_string(), binance_auth.api_key().to_string());
+        
+        // Generate request body for signing (if any)
+        let body_string: Option<Vec<u8>> = None;
+        
+        // Sign the request
+        let signature = match binance_auth.sign(Some(&query_params), body_string.as_deref()) {
+            Ok(sig) => sig,
+            Err(e) => return Err(Error::Generic(format!("Failed to sign request: {}", e))),
+        };
+        
+        // Add signature to query params
+        query_params.push(("signature".to_string(), signature));
+    }
+
+    // Apply all query parameters
+    if !query_params.is_empty() {
+        req_builder = req_builder.query(&query_params);
+    }
+
+
+    // Add user agent if configured
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
+
+    // Apply all header parameters
+    for (header_name, header_value) in header_params {
+        req_builder = req_builder.header(&header_name, &header_value);
+    }
+
     if let Some(ref apikey) = configuration.api_key {
         let key = apikey.key.clone();
         let value = match apikey.prefix {

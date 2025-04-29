@@ -117,4 +117,5 @@ pub mod market_data_api;
 pub mod trading_api;
 pub mod user_data_stream_api;
 
+pub mod signing;
 pub mod configuration;

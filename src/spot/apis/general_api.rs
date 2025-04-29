@@ -11,7 +11,7 @@
 
 use reqwest;
 use serde::{Deserialize, Serialize, de::Error as _};
-use crate::{apis::ResponseContent, models};
+use crate::spot::{apis::ResponseContent, models};
 use super::{Error, configuration, ContentType};
 
 /// struct for passing parameters to the method [`spot_get_exchange_info_v3`]
@@ -64,27 +64,75 @@ pub async fn spot_get_exchange_info_v3(configuration: &configuration::Configurat
     let uri_str = format!("{}/api/v3/exchangeInfo", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
+    // Create a mutable vector for query parameters
+    let mut query_params: Vec<(String, String)> = Vec::new();
+
     if let Some(ref param_value) = params.symbol {
-        req_builder = req_builder.query(&[("symbol", &param_value.to_string())]);
+        query_params.push(("symbol".to_string(), param_value.to_string()));
     }
     if let Some(ref param_value) = params.symbols {
-        req_builder = match "multi" {
-            "multi" => req_builder.query(&param_value.into_iter().map(|p| ("symbols".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
-            _ => req_builder.query(&[("symbols", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
+        match "multi" {
+            "multi" => {
+                for p in param_value {
+                    query_params.push(("symbols".to_string(), p.to_string()));
+                }
+            },
+            _ => {
+                let joined = param_value.iter()
+                    .map(|p| p.to_string())
+                    .collect::<Vec<String>>()
+                    .join(",");
+                query_params.push(("symbols".to_string(), joined));
+            }
         };
     }
     if let Some(ref param_value) = params.permissions {
-        req_builder = req_builder.query(&[("permissions", &param_value.to_string())]);
+        query_params.push(("permissions".to_string(), param_value.to_string()));
     }
     if let Some(ref param_value) = params.show_permission_sets {
-        req_builder = req_builder.query(&[("showPermissionSets", &param_value.to_string())]);
+        query_params.push(("showPermissionSets".to_string(), param_value.to_string()));
     }
     if let Some(ref param_value) = params.symbol_status {
-        req_builder = req_builder.query(&[("symbolStatus", &param_value.to_string())]);
+        query_params.push(("symbolStatus".to_string(), param_value.to_string()));
     }
+
+    // Create header parameters collection
+    let mut header_params = std::collections::HashMap::new();
+
+    // Handle Binance Auth first if configured
+    if let Some(ref binance_auth) = configuration.binance_auth {
+        // Add API key to headers
+        header_params.insert("X-MBX-APIKEY".to_string(), binance_auth.api_key().to_string());
+        
+        // Generate request body for signing (if any)
+        let body_string: Option<Vec<u8>> = None;
+        
+        // Sign the request
+        let signature = match binance_auth.sign(Some(&query_params), body_string.as_deref()) {
+            Ok(sig) => sig,
+            Err(e) => return Err(Error::Generic(format!("Failed to sign request: {}", e))),
+        };
+        
+        // Add signature to query params
+        query_params.push(("signature".to_string(), signature));
+    }
+
+    // Apply all query parameters
+    if !query_params.is_empty() {
+        req_builder = req_builder.query(&query_params);
+    }
+
+
+    // Add user agent if configured
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
+
+    // Apply all header parameters
+    for (header_name, header_value) in header_params {
+        req_builder = req_builder.header(&header_name, &header_value);
+    }
+
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -117,9 +165,47 @@ pub async fn spot_get_ping_v3(configuration: &configuration::Configuration) -> R
     let uri_str = format!("{}/api/v3/ping", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
+    // Create a mutable vector for query parameters
+    let mut query_params: Vec<(String, String)> = Vec::new();
+
+
+    // Create header parameters collection
+    let mut header_params = std::collections::HashMap::new();
+
+    // Handle Binance Auth first if configured
+    if let Some(ref binance_auth) = configuration.binance_auth {
+        // Add API key to headers
+        header_params.insert("X-MBX-APIKEY".to_string(), binance_auth.api_key().to_string());
+        
+        // Generate request body for signing (if any)
+        let body_string: Option<Vec<u8>> = None;
+        
+        // Sign the request
+        let signature = match binance_auth.sign(Some(&query_params), body_string.as_deref()) {
+            Ok(sig) => sig,
+            Err(e) => return Err(Error::Generic(format!("Failed to sign request: {}", e))),
+        };
+        
+        // Add signature to query params
+        query_params.push(("signature".to_string(), signature));
+    }
+
+    // Apply all query parameters
+    if !query_params.is_empty() {
+        req_builder = req_builder.query(&query_params);
+    }
+
+
+    // Add user agent if configured
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
+
+    // Apply all header parameters
+    for (header_name, header_value) in header_params {
+        req_builder = req_builder.header(&header_name, &header_value);
+    }
+
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -152,9 +238,47 @@ pub async fn spot_get_time_v3(configuration: &configuration::Configuration) -> R
     let uri_str = format!("{}/api/v3/time", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
+    // Create a mutable vector for query parameters
+    let mut query_params: Vec<(String, String)> = Vec::new();
+
+
+    // Create header parameters collection
+    let mut header_params = std::collections::HashMap::new();
+
+    // Handle Binance Auth first if configured
+    if let Some(ref binance_auth) = configuration.binance_auth {
+        // Add API key to headers
+        header_params.insert("X-MBX-APIKEY".to_string(), binance_auth.api_key().to_string());
+        
+        // Generate request body for signing (if any)
+        let body_string: Option<Vec<u8>> = None;
+        
+        // Sign the request
+        let signature = match binance_auth.sign(Some(&query_params), body_string.as_deref()) {
+            Ok(sig) => sig,
+            Err(e) => return Err(Error::Generic(format!("Failed to sign request: {}", e))),
+        };
+        
+        // Add signature to query params
+        query_params.push(("signature".to_string(), signature));
+    }
+
+    // Apply all query parameters
+    if !query_params.is_empty() {
+        req_builder = req_builder.query(&query_params);
+    }
+
+
+    // Add user agent if configured
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
+
+    // Apply all header parameters
+    for (header_name, header_value) in header_params {
+        req_builder = req_builder.header(&header_name, &header_value);
+    }
+
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
