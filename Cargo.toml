@@ -1,7 +1,12 @@
 [package]
 name = "openxapi-binance"
-version = "0.1.0"
+version = "0.1.2"
 edition = "2021"
+description = "Rust client for Binance API"
+readme = "README.md"
+repository = "https://github.com/openxapi/binance-rs"
+license-file = "LICENSE"
+authors = ["OpenXAPI <contact@openxapi.com>"]
 
 [lib]
 name = "binance"
