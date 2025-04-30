@@ -15,13 +15,13 @@ use crate::spot::{apis::ResponseContent, models};
 use super::{Error, configuration, ContentType};
 
 /// struct for passing parameters to the method [`spot_get_account_commission_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotGetAccountCommissionV3Params {
     pub symbol: String
 }
 
 /// struct for passing parameters to the method [`spot_get_account_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotGetAccountV3Params {
     pub timestamp: i64,
     /// When set to `true`, emits only the non-zero balances of an account. <br/>Default value: `false`
@@ -31,7 +31,7 @@ pub struct SpotGetAccountV3Params {
 }
 
 /// struct for passing parameters to the method [`spot_get_my_allocations_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotGetMyAllocationsV3Params {
     pub symbol: String,
     pub start_time: Option<i64>,
@@ -46,7 +46,7 @@ pub struct SpotGetMyAllocationsV3Params {
 }
 
 /// struct for passing parameters to the method [`spot_get_my_prevented_matches_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotGetMyPreventedMatchesV3Params {
     pub symbol: String,
     pub timestamp: i64,
@@ -60,7 +60,7 @@ pub struct SpotGetMyPreventedMatchesV3Params {
 }
 
 /// struct for passing parameters to the method [`spot_get_my_trades_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotGetMyTradesV3Params {
     pub symbol: String,
     pub timestamp: i64,
@@ -77,7 +77,7 @@ pub struct SpotGetMyTradesV3Params {
 }
 
 /// struct for passing parameters to the method [`spot_get_rate_limit_order_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotGetRateLimitOrderV3Params {
     pub timestamp: i64,
     /// The value cannot be greater than `60000`
@@ -188,14 +188,6 @@ pub async fn spot_get_account_commission_v3(configuration: &configuration::Confi
         req_builder = req_builder.header(&header_name, &header_value);
     }
 
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("X-MBX-APIKEY", value);
-    };
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -276,14 +268,6 @@ pub async fn spot_get_account_v3(configuration: &configuration::Configuration, p
         req_builder = req_builder.header(&header_name, &header_value);
     }
 
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("X-MBX-APIKEY", value);
-    };
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -379,14 +363,6 @@ pub async fn spot_get_my_allocations_v3(configuration: &configuration::Configura
         req_builder = req_builder.header(&header_name, &header_value);
     }
 
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("X-MBX-APIKEY", value);
-    };
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -477,14 +453,6 @@ pub async fn spot_get_my_prevented_matches_v3(configuration: &configuration::Con
         req_builder = req_builder.header(&header_name, &header_value);
     }
 
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("X-MBX-APIKEY", value);
-    };
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -578,14 +546,6 @@ pub async fn spot_get_my_trades_v3(configuration: &configuration::Configuration,
         req_builder = req_builder.header(&header_name, &header_value);
     }
 
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("X-MBX-APIKEY", value);
-    };
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -663,14 +623,6 @@ pub async fn spot_get_rate_limit_order_v3(configuration: &configuration::Configu
         req_builder = req_builder.header(&header_name, &header_value);
     }
 
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("X-MBX-APIKEY", value);
-    };
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

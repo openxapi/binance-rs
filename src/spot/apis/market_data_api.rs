@@ -15,7 +15,7 @@ use crate::spot::{apis::ResponseContent, models};
 use super::{Error, configuration, ContentType};
 
 /// struct for passing parameters to the method [`spot_get_agg_trades_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotGetAggTradesV3Params {
     pub symbol: String,
     /// ID to get aggregate trades from INCLUSIVE.
@@ -29,13 +29,13 @@ pub struct SpotGetAggTradesV3Params {
 }
 
 /// struct for passing parameters to the method [`spot_get_avg_price_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotGetAvgPriceV3Params {
     pub symbol: String
 }
 
 /// struct for passing parameters to the method [`spot_get_depth_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotGetDepthV3Params {
     pub symbol: String,
     /// Default 100; max 5000. <br/> If limit &gt; 5000. then the response will truncate to 5000.
@@ -43,7 +43,7 @@ pub struct SpotGetDepthV3Params {
 }
 
 /// struct for passing parameters to the method [`spot_get_historical_trades_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotGetHistoricalTradesV3Params {
     pub symbol: String,
     /// Default 500; max 1000.
@@ -53,7 +53,7 @@ pub struct SpotGetHistoricalTradesV3Params {
 }
 
 /// struct for passing parameters to the method [`spot_get_klines_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotGetKlinesV3Params {
     pub symbol: String,
     pub interval: String,
@@ -66,7 +66,7 @@ pub struct SpotGetKlinesV3Params {
 }
 
 /// struct for passing parameters to the method [`spot_get_ticker24hr_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotGetTicker24hrV3Params {
     /// Parameter symbol and symbols cannot be used in combination. <br/> If neither parameter is sent, tickers for all symbols will be returned in an array. <br/><br/>          Examples of accepted format for the symbols parameter:          [&#34;BTCUSDT&#34;,&#34;BNBUSDT&#34;] <br/>          or <br/>          %5B%22BTCUSDT%22,%22BNBUSDT%22%5D
     pub symbol: Option<String>,
@@ -77,7 +77,7 @@ pub struct SpotGetTicker24hrV3Params {
 }
 
 /// struct for passing parameters to the method [`spot_get_ticker_book_ticker_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotGetTickerBookTickerV3Params {
     /// Parameter symbol and symbols cannot be used in combination. <br/> If neither parameter is sent, bookTickers for all symbols will be returned in an array.          <br/><br/>         Examples of accepted format for the symbols parameter:          [&#34;BTCUSDT&#34;,&#34;BNBUSDT&#34;] <br/>          or <br/>          %5B%22BTCUSDT%22,%22BNBUSDT%22%5D
     pub symbol: Option<String>,
@@ -86,7 +86,7 @@ pub struct SpotGetTickerBookTickerV3Params {
 }
 
 /// struct for passing parameters to the method [`spot_get_ticker_price_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotGetTickerPriceV3Params {
     /// Parameter symbol and symbols cannot be used in combination. <br/> If neither parameter is sent, prices for all symbols will be returned in an array. <br/><br/>         Examples of accepted format for the symbols parameter:          [&#34;BTCUSDT&#34;,&#34;BNBUSDT&#34;] <br/>          or <br/>          %5B%22BTCUSDT%22,%22BNBUSDT%22%5D
     pub symbol: Option<String>,
@@ -95,7 +95,7 @@ pub struct SpotGetTickerPriceV3Params {
 }
 
 /// struct for passing parameters to the method [`spot_get_ticker_trading_day_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotGetTickerTradingDayV3Params {
     /// Either `symbol` or `symbols` must be provided <br/><br/> Examples of accepted format for the `symbols` parameter: <br/> [&#34;BTCUSDT&#34;,&#34;BNBUSDT&#34;] <br/>or <br/>%5B%22BTCUSDT%22,%22BNBUSDT%22%5D <br/><br/> The maximum number of `symbols` allowed in a request is 100.
     pub symbol: String,
@@ -108,7 +108,7 @@ pub struct SpotGetTickerTradingDayV3Params {
 }
 
 /// struct for passing parameters to the method [`spot_get_ticker_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotGetTickerV3Params {
     /// Either `symbol` or `symbols` must be provided <br/><br/> Examples of accepted format for the `symbols` parameter: <br/> [&#34;BTCUSDT&#34;,&#34;BNBUSDT&#34;] <br/>or <br/>%5B%22BTCUSDT%22,%22BNBUSDT%22%5D <br/><br/> The maximum number of `symbols` allowed in a request is 100.
     pub symbol: String,
@@ -121,7 +121,7 @@ pub struct SpotGetTickerV3Params {
 }
 
 /// struct for passing parameters to the method [`spot_get_trades_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotGetTradesV3Params {
     pub symbol: String,
     /// Default 500; max 1000.
@@ -129,7 +129,7 @@ pub struct SpotGetTradesV3Params {
 }
 
 /// struct for passing parameters to the method [`spot_get_ui_klines_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotGetUiKlinesV3Params {
     pub symbol: String,
     /// See <a href=\"/docs/binance-spot-api-docs/rest-api/market-data-endpoints#kline-intervals\">`klines`</a>

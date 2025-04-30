@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**m** | Option<**bool**> |  | [optional]
+**is_best_match** | Option<**bool**> |  | [optional]
 **t** | Option<**i64**> |  | [optional]
 **a** | Option<**i64**> |  | [optional]
 **f** | Option<**i64**> |  | [optional]

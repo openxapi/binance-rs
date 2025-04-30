@@ -9,7 +9,7 @@
  */
 
 
-use base64;
+use base64::{Engine as _, engine::general_purpose::STANDARD};
 use hmac::{Hmac, Mac};
 use sha2::Sha256;
 use std::fs;
@@ -20,7 +20,8 @@ use openssl::rsa::Rsa;
 use openssl::pkey::{PKey, Private};
 use openssl::sign::Signer;
 use openssl::hash::MessageDigest;
-use ed25519_dalek::{Keypair, Signer as DalekSigner, SECRET_KEY_LENGTH};
+use ed25519_dalek::{SigningKey, Signer as DalekSigner, SECRET_KEY_LENGTH};
+use hex;
 
 #[derive(Debug, Clone, PartialEq)]
 pub enum KeyType {
@@ -82,7 +83,7 @@ pub struct BinanceAuth {
 
 impl BinanceAuth {
     /// Create a new BinanceAuth with HMAC signing using the provided secret key
-    pub fn new_with_hmac(api_key: &str, secret_key: &str) -> Result<Self, BinanceAuthError> {
+    pub fn new_with_secret_key(api_key: &str, secret_key: &str) -> Result<Self, BinanceAuthError> {
         if api_key.is_empty() {
             return Err(BinanceAuthError::ConfigError("API Key is required".to_string()));
         }
@@ -177,19 +178,28 @@ impl BinanceAuth {
                     let mut signer = Signer::new(MessageDigest::sha256(), &pkey)?;
                     signer.update(&payload)?;
                     let signature = signer.sign_to_vec()?;
-                    Ok(base64::encode(&signature))
+                    Ok(STANDARD.encode(&signature))
                 } else {
                     Err(BinanceAuthError::ConfigError("RSA key not available for RSA signing".to_string()))
                 }
             },
             KeyType::ED25519 => {
                 if let PrivateKeyData::Ed25519Key(key_data) = &self.private_key_data {
-                    // This is a simplified approach - in a real implementation, you would need 
-                    // a more robust way to create a valid Ed25519 keypair from the stored key data
-                    let keypair = Keypair::from_bytes(key_data)
-                        .map_err(|e| BinanceAuthError::CryptoError(e.to_string()))?;
-                    let signature = keypair.sign(&payload);
-                    Ok(base64::encode(signature.to_bytes()))
+                    // Ensure we have exactly 32 bytes for Ed25519 key
+                    if key_data.len() != SECRET_KEY_LENGTH {
+                        return Err(BinanceAuthError::CryptoError(
+                            format!("Ed25519 key must be exactly {} bytes, found {} bytes", 
+                                SECRET_KEY_LENGTH, key_data.len())
+                        ));
+                    }
+
+                    // Convert Vec<u8> to [u8; 32]
+                    let mut fixed_key = [0u8; SECRET_KEY_LENGTH];
+                    fixed_key.copy_from_slice(&key_data[..SECRET_KEY_LENGTH]);
+
+                    let signing_key = SigningKey::from_bytes(&fixed_key);
+                    let signature = signing_key.sign(&payload);
+                    Ok(STANDARD.encode(signature.to_bytes()))
                 } else {
                     Err(BinanceAuthError::ConfigError("Ed25519 key not available for Ed25519 signing".to_string()))
                 }

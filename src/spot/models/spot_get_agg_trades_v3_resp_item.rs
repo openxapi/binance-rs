@@ -14,7 +14,7 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct SpotGetAggTradesV3RespItem {
     #[serde(rename = "M", skip_serializing_if = "Option::is_none")]
-    pub m: Option<bool>,
+    pub is_best_match: Option<bool>,
     #[serde(rename = "T", skip_serializing_if = "Option::is_none")]
     pub t: Option<i64>,
     #[serde(rename = "a", skip_serializing_if = "Option::is_none")]
@@ -34,7 +34,7 @@ pub struct SpotGetAggTradesV3RespItem {
 impl SpotGetAggTradesV3RespItem {
     pub fn new() -> SpotGetAggTradesV3RespItem {
         SpotGetAggTradesV3RespItem {
-            m: None,
+            is_best_match: None,
             t: None,
             a: None,
             f: None,

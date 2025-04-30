@@ -15,7 +15,7 @@ use crate::spot::{apis::ResponseContent, models};
 use super::{Error, configuration, ContentType};
 
 /// struct for passing parameters to the method [`spot_create_order_cancel_replace_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotCreateOrderCancelReplaceV3Params {
     pub cancel_replace_mode: String,
     pub side: String,
@@ -43,7 +43,7 @@ pub struct SpotCreateOrderCancelReplaceV3Params {
 }
 
 /// struct for passing parameters to the method [`spot_create_order_list_oco_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotCreateOrderListOcoV3Params {
     pub above_type: String,
     pub below_type: String,
@@ -74,7 +74,7 @@ pub struct SpotCreateOrderListOcoV3Params {
 }
 
 /// struct for passing parameters to the method [`spot_create_order_list_oto_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotCreateOrderListOtoV3Params {
     pub pending_quantity: String,
     pub pending_side: String,
@@ -105,7 +105,7 @@ pub struct SpotCreateOrderListOtoV3Params {
 }
 
 /// struct for passing parameters to the method [`spot_create_order_list_otoco_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotCreateOrderListOtocoV3Params {
     pub pending_above_type: String,
     pub pending_quantity: String,
@@ -145,7 +145,7 @@ pub struct SpotCreateOrderListOtocoV3Params {
 }
 
 /// struct for passing parameters to the method [`spot_create_order_oco_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotCreateOrderOcoV3Params {
     pub price: String,
     pub quantity: String,
@@ -171,7 +171,7 @@ pub struct SpotCreateOrderOcoV3Params {
 }
 
 /// struct for passing parameters to the method [`spot_create_order_test_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotCreateOrderTestV3Params {
     pub side: String,
     pub symbol: String,
@@ -194,7 +194,7 @@ pub struct SpotCreateOrderTestV3Params {
 }
 
 /// struct for passing parameters to the method [`spot_create_order_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotCreateOrderV3Params {
     pub side: String,
     pub symbol: String,
@@ -216,7 +216,7 @@ pub struct SpotCreateOrderV3Params {
 }
 
 /// struct for passing parameters to the method [`spot_create_sor_order_test_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotCreateSorOrderTestV3Params {
     pub quantity: String,
     pub side: String,
@@ -236,7 +236,7 @@ pub struct SpotCreateSorOrderTestV3Params {
 }
 
 /// struct for passing parameters to the method [`spot_create_sor_order_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotCreateSorOrderV3Params {
     pub quantity: String,
     pub side: String,
@@ -255,7 +255,7 @@ pub struct SpotCreateSorOrderV3Params {
 }
 
 /// struct for passing parameters to the method [`spot_delete_open_orders_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotDeleteOpenOrdersV3Params {
     pub symbol: String,
     pub timestamp: i64,
@@ -264,7 +264,7 @@ pub struct SpotDeleteOpenOrdersV3Params {
 }
 
 /// struct for passing parameters to the method [`spot_delete_order_list_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotDeleteOrderListV3Params {
     pub symbol: String,
     pub timestamp: i64,
@@ -279,7 +279,7 @@ pub struct SpotDeleteOrderListV3Params {
 }
 
 /// struct for passing parameters to the method [`spot_delete_order_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotDeleteOrderV3Params {
     pub symbol: String,
     pub timestamp: i64,
@@ -294,7 +294,7 @@ pub struct SpotDeleteOrderV3Params {
 }
 
 /// struct for passing parameters to the method [`spot_get_all_order_list_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotGetAllOrderListV3Params {
     pub timestamp: i64,
     /// If supplied, neither `startTime` or `endTime` can be provided
@@ -308,7 +308,7 @@ pub struct SpotGetAllOrderListV3Params {
 }
 
 /// struct for passing parameters to the method [`spot_get_all_orders_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotGetAllOrdersV3Params {
     pub symbol: String,
     pub timestamp: i64,
@@ -322,7 +322,7 @@ pub struct SpotGetAllOrdersV3Params {
 }
 
 /// struct for passing parameters to the method [`spot_get_open_order_list_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotGetOpenOrderListV3Params {
     pub timestamp: i64,
     /// The value cannot be greater than `60000`
@@ -330,7 +330,7 @@ pub struct SpotGetOpenOrderListV3Params {
 }
 
 /// struct for passing parameters to the method [`spot_get_open_orders_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotGetOpenOrdersV3Params {
     pub timestamp: i64,
     pub symbol: Option<String>,
@@ -339,7 +339,7 @@ pub struct SpotGetOpenOrdersV3Params {
 }
 
 /// struct for passing parameters to the method [`spot_get_order_list_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotGetOrderListV3Params {
     pub timestamp: i64,
     /// Either `orderListId` or `listClientOrderId` must be provided
@@ -351,7 +351,7 @@ pub struct SpotGetOrderListV3Params {
 }
 
 /// struct for passing parameters to the method [`spot_get_order_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotGetOrderV3Params {
     pub symbol: String,
     pub timestamp: i64,
@@ -572,14 +572,6 @@ pub async fn spot_create_order_cancel_replace_v3(configuration: &configuration::
         req_builder = req_builder.header(&header_name, &header_value);
     }
 
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("X-MBX-APIKEY", value);
-    };
     let mut multipart_form_params = std::collections::HashMap::new();
     if let Some(param_value) = params.cancel_new_client_order_id {
         multipart_form_params.insert("cancelNewClientOrderId", param_value.to_string());
@@ -714,14 +706,6 @@ pub async fn spot_create_order_list_oco_v3(configuration: &configuration::Config
         req_builder = req_builder.header(&header_name, &header_value);
     }
 
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("X-MBX-APIKEY", value);
-    };
     let mut multipart_form_params = std::collections::HashMap::new();
     if let Some(param_value) = params.above_client_order_id {
         multipart_form_params.insert("aboveClientOrderId", param_value.to_string());
@@ -863,14 +847,6 @@ pub async fn spot_create_order_list_oto_v3(configuration: &configuration::Config
         req_builder = req_builder.header(&header_name, &header_value);
     }
 
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("X-MBX-APIKEY", value);
-    };
     let mut multipart_form_params = std::collections::HashMap::new();
     if let Some(param_value) = params.list_client_order_id {
         multipart_form_params.insert("listClientOrderId", param_value.to_string());
@@ -1006,14 +982,6 @@ pub async fn spot_create_order_list_otoco_v3(configuration: &configuration::Conf
         req_builder = req_builder.header(&header_name, &header_value);
     }
 
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("X-MBX-APIKEY", value);
-    };
     let mut multipart_form_params = std::collections::HashMap::new();
     if let Some(param_value) = params.list_client_order_id {
         multipart_form_params.insert("listClientOrderId", param_value.to_string());
@@ -1176,14 +1144,6 @@ pub async fn spot_create_order_oco_v3(configuration: &configuration::Configurati
         req_builder = req_builder.header(&header_name, &header_value);
     }
 
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("X-MBX-APIKEY", value);
-    };
     let mut multipart_form_params = std::collections::HashMap::new();
     if let Some(param_value) = params.limit_client_order_id {
         multipart_form_params.insert("limitClientOrderId", param_value.to_string());
@@ -1310,14 +1270,6 @@ pub async fn spot_create_order_test_v3(configuration: &configuration::Configurat
         req_builder = req_builder.header(&header_name, &header_value);
     }
 
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("X-MBX-APIKEY", value);
-    };
     let mut multipart_form_params = std::collections::HashMap::new();
     if let Some(param_value) = params.compute_commission_rates {
         multipart_form_params.insert("computeCommissionRates", param_value.to_string());
@@ -1439,14 +1391,6 @@ pub async fn spot_create_order_v3(configuration: &configuration::Configuration, 
         req_builder = req_builder.header(&header_name, &header_value);
     }
 
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("X-MBX-APIKEY", value);
-    };
     let mut multipart_form_params = std::collections::HashMap::new();
     if let Some(param_value) = params.iceberg_qty {
         multipart_form_params.insert("icebergQty", param_value.to_string());
@@ -1565,14 +1509,6 @@ pub async fn spot_create_sor_order_test_v3(configuration: &configuration::Config
         req_builder = req_builder.header(&header_name, &header_value);
     }
 
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("X-MBX-APIKEY", value);
-    };
     let mut multipart_form_params = std::collections::HashMap::new();
     if let Some(param_value) = params.compute_commission_rates {
         multipart_form_params.insert("computeCommissionRates", param_value.to_string());
@@ -1683,14 +1619,6 @@ pub async fn spot_create_sor_order_v3(configuration: &configuration::Configurati
         req_builder = req_builder.header(&header_name, &header_value);
     }
 
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("X-MBX-APIKEY", value);
-    };
     let mut multipart_form_params = std::collections::HashMap::new();
     if let Some(param_value) = params.iceberg_qty {
         multipart_form_params.insert("icebergQty", param_value.to_string());
@@ -1803,14 +1731,6 @@ pub async fn spot_delete_open_orders_v3(configuration: &configuration::Configura
         req_builder = req_builder.header(&header_name, &header_value);
     }
 
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("X-MBX-APIKEY", value);
-    };
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1898,14 +1818,6 @@ pub async fn spot_delete_order_list_v3(configuration: &configuration::Configurat
         req_builder = req_builder.header(&header_name, &header_value);
     }
 
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("X-MBX-APIKEY", value);
-    };
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1996,14 +1908,6 @@ pub async fn spot_delete_order_v3(configuration: &configuration::Configuration, 
         req_builder = req_builder.header(&header_name, &header_value);
     }
 
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("X-MBX-APIKEY", value);
-    };
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2093,14 +1997,6 @@ pub async fn spot_get_all_order_list_v3(configuration: &configuration::Configura
         req_builder = req_builder.header(&header_name, &header_value);
     }
 
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("X-MBX-APIKEY", value);
-    };
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2191,14 +2087,6 @@ pub async fn spot_get_all_orders_v3(configuration: &configuration::Configuration
         req_builder = req_builder.header(&header_name, &header_value);
     }
 
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("X-MBX-APIKEY", value);
-    };
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2275,14 +2163,6 @@ pub async fn spot_get_open_order_list_v3(configuration: &configuration::Configur
         req_builder = req_builder.header(&header_name, &header_value);
     }
 
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("X-MBX-APIKEY", value);
-    };
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2363,14 +2243,6 @@ pub async fn spot_get_open_orders_v3(configuration: &configuration::Configuratio
         req_builder = req_builder.header(&header_name, &header_value);
     }
 
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("X-MBX-APIKEY", value);
-    };
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2454,14 +2326,6 @@ pub async fn spot_get_order_list_v3(configuration: &configuration::Configuration
         req_builder = req_builder.header(&header_name, &header_value);
     }
 
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("X-MBX-APIKEY", value);
-    };
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2546,14 +2410,6 @@ pub async fn spot_get_order_v3(configuration: &configuration::Configuration, par
         req_builder = req_builder.header(&header_name, &header_value);
     }
 
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("X-MBX-APIKEY", value);
-    };
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

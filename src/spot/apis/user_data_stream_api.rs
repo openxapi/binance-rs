@@ -15,13 +15,13 @@ use crate::spot::{apis::ResponseContent, models};
 use super::{Error, configuration, ContentType};
 
 /// struct for passing parameters to the method [`spot_delete_user_data_stream_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotDeleteUserDataStreamV3Params {
     pub listen_key: String
 }
 
 /// struct for passing parameters to the method [`spot_update_user_data_stream_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotUpdateUserDataStreamV3Params {
     pub listen_key: String
 }
@@ -102,14 +102,6 @@ pub async fn spot_create_user_data_stream_v3(configuration: &configuration::Conf
         req_builder = req_builder.header(&header_name, &header_value);
     }
 
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("X-MBX-APIKEY", value);
-    };
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -184,14 +176,6 @@ pub async fn spot_delete_user_data_stream_v3(configuration: &configuration::Conf
         req_builder = req_builder.header(&header_name, &header_value);
     }
 
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("X-MBX-APIKEY", value);
-    };
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -265,14 +249,6 @@ pub async fn spot_update_user_data_stream_v3(configuration: &configuration::Conf
         req_builder = req_builder.header(&header_name, &header_value);
     }
 
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("X-MBX-APIKEY", value);
-    };
     let mut multipart_form_params = std::collections::HashMap::new();
     multipart_form_params.insert("listenKey", params.listen_key.to_string());
     req_builder = req_builder.form(&multipart_form_params);

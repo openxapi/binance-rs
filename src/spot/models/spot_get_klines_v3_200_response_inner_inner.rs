@@ -15,7 +15,6 @@ use serde::{Deserialize, Serialize};
 #[serde(untagged)]
 pub enum SpotGetKlinesV3200ResponseInnerInner {
     Integer(i64),
-    Integer(i32),
     String(String),
 }
 

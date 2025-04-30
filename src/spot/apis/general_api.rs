@@ -15,7 +15,7 @@ use crate::spot::{apis::ResponseContent, models};
 use super::{Error, configuration, ContentType};
 
 /// struct for passing parameters to the method [`spot_get_exchange_info_v3`]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct SpotGetExchangeInfoV3Params {
     /// Example: curl -X GET &#34;<a href=\"https://api.binance.com/api/v3/exchangeInfo?symbol=BNBBTC\" target=\"_blank\" rel=\"noopener noreferrer\">https://api.binance.com/api/v3/exchangeInfo?symbol=BNBBTC</a>&#34;
     pub symbol: Option<String>,
