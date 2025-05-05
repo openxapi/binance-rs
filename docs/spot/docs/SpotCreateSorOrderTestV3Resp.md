@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**discount** | Option<[**models::SpotCreateOrderTestV3RespDiscount**](SpotCreateOrderTestV3Resp_discount.md)> |  | [optional]
+**discount** | Option<[**models::GetAccountCommissionV3RespDiscount**](GetAccountCommissionV3Resp_discount.md)> |  | [optional]
 **standard_commission_for_order** | Option<[**models::SpotCreateOrderTestV3RespStandardCommissionForOrder**](SpotCreateOrderTestV3Resp_standardCommissionForOrder.md)> |  | [optional]
 **tax_commission_for_order** | Option<[**models::SpotCreateOrderTestV3RespStandardCommissionForOrder**](SpotCreateOrderTestV3Resp_standardCommissionForOrder.md)> |  | [optional]
 

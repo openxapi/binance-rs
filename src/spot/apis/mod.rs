@@ -123,11 +123,16 @@ impl From<&str> for ContentType {
     }
 }
 
-pub mod account_api;
-pub mod general_api;
-pub mod market_data_api;
-pub mod trading_api;
-pub mod user_data_stream_api;
+pub mod algo_trading_api;
+pub mod binance_link_api;
+pub mod convert_api;
+pub mod copy_trading_api;
+pub mod futures_data_api;
+pub mod margin_trading_api;
+pub mod portfolio_margin_pro_api;
+pub mod spot_trading_api;
+pub mod sub_account_api;
+pub mod wallet_api;
 
 pub mod signing;
 pub mod configuration;

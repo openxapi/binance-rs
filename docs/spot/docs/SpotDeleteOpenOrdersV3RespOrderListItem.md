@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **list_status_type** | Option<**String**> |  | [optional]
 **order_list_id** | Option<**i64**> |  | [optional]
 **order_reports** | Option<[**Vec<models::SpotDeleteOpenOrdersV3RespOrderItem>**](SpotDeleteOpenOrdersV3RespOrderItem.md)> |  | [optional]
-**orders** | Option<[**Vec<models::SpotCreateOrderListOcoV3RespOrdersInner>**](SpotCreateOrderListOcoV3Resp_orders_inner.md)> |  | [optional]
+**orders** | Option<[**Vec<models::CreateMarginOrderOcoV1RespOrdersInner>**](CreateMarginOrderOcoV1Resp_orders_inner.md)> |  | [optional]
 **symbol** | Option<**String**> |  | [optional]
 **transaction_time** | Option<**i64**> |  | [optional]
 

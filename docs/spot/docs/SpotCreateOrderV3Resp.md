@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **client_order_id** | Option<**String**> |  | [optional]
 **cummulative_quote_qty** | Option<**String**> |  | [optional]
 **executed_qty** | Option<**String**> |  | [optional]
-**fills** | Option<[**Vec<models::SpotCreateOrderV3RespFillsInner>**](SpotCreateOrderV3Resp_fills_inner.md)> |  | [optional]
+**fills** | Option<[**Vec<models::MarginCreateMarginOrderV1RespFillsInner>**](MarginCreateMarginOrderV1Resp_fills_inner.md)> |  | [optional]
 **order_id** | Option<**i64**> |  | [optional]
 **order_list_id** | Option<**i64**> |  | [optional]
 **orig_qty** | Option<**String**> |  | [optional]
