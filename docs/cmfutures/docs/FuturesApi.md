@@ -1,74 +1,74 @@
-# \CoinMarginedFuturesApi
+# \FuturesApi
 
 All URIs are relative to *https://dapi.binance.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_batch_orders_v1**](CoinMarginedFuturesApi.md#create_batch_orders_v1) | **POST** /dapi/v1/batchOrders | Place Multiple Orders(TRADE)
-[**create_countdown_cancel_all_v1**](CoinMarginedFuturesApi.md#create_countdown_cancel_all_v1) | **POST** /dapi/v1/countdownCancelAll | Auto-Cancel All Open Orders (TRADE)
-[**create_leverage_v1**](CoinMarginedFuturesApi.md#create_leverage_v1) | **POST** /dapi/v1/leverage | Change Initial Leverage (TRADE)
-[**create_listen_key_v1**](CoinMarginedFuturesApi.md#create_listen_key_v1) | **POST** /dapi/v1/listenKey | Start User Data Stream (USER_STREAM)
-[**create_margin_type_v1**](CoinMarginedFuturesApi.md#create_margin_type_v1) | **POST** /dapi/v1/marginType | Change Margin Type (TRADE)
-[**create_order_v1**](CoinMarginedFuturesApi.md#create_order_v1) | **POST** /dapi/v1/order | New Order (TRADE)
-[**create_position_margin_v1**](CoinMarginedFuturesApi.md#create_position_margin_v1) | **POST** /dapi/v1/positionMargin | Modify Isolated Position Margin(TRADE)
-[**create_position_side_dual_v1**](CoinMarginedFuturesApi.md#create_position_side_dual_v1) | **POST** /dapi/v1/positionSide/dual | Change Position Mode(TRADE)
-[**delete_all_open_orders_v1**](CoinMarginedFuturesApi.md#delete_all_open_orders_v1) | **DELETE** /dapi/v1/allOpenOrders | Cancel All Open Orders(TRADE)
-[**delete_batch_orders_v1**](CoinMarginedFuturesApi.md#delete_batch_orders_v1) | **DELETE** /dapi/v1/batchOrders | Cancel Multiple Orders(TRADE)
-[**delete_listen_key_v1**](CoinMarginedFuturesApi.md#delete_listen_key_v1) | **DELETE** /dapi/v1/listenKey | Close User Data Stream(USER_STREAM)
-[**delete_order_v1**](CoinMarginedFuturesApi.md#delete_order_v1) | **DELETE** /dapi/v1/order | Cancel Order (TRADE)
-[**get_account_v1**](CoinMarginedFuturesApi.md#get_account_v1) | **GET** /dapi/v1/account | Account Information (USER_DATA)
-[**get_adl_quantile_v1**](CoinMarginedFuturesApi.md#get_adl_quantile_v1) | **GET** /dapi/v1/adlQuantile | Position ADL Quantile Estimation(USER_DATA)
-[**get_agg_trades_v1**](CoinMarginedFuturesApi.md#get_agg_trades_v1) | **GET** /dapi/v1/aggTrades | Compressed/Aggregate Trades List
-[**get_all_orders_v1**](CoinMarginedFuturesApi.md#get_all_orders_v1) | **GET** /dapi/v1/allOrders | All Orders (USER_DATA)
-[**get_balance_v1**](CoinMarginedFuturesApi.md#get_balance_v1) | **GET** /dapi/v1/balance | Futures Account Balance (USER_DATA)
-[**get_commission_rate_v1**](CoinMarginedFuturesApi.md#get_commission_rate_v1) | **GET** /dapi/v1/commissionRate | User Commission Rate (USER_DATA)
-[**get_constituents_v1**](CoinMarginedFuturesApi.md#get_constituents_v1) | **GET** /dapi/v1/constituents | Query Index Price Constituents
-[**get_continuous_klines_v1**](CoinMarginedFuturesApi.md#get_continuous_klines_v1) | **GET** /dapi/v1/continuousKlines | Continuous Contract Kline/Candlestick Data
-[**get_depth_v1**](CoinMarginedFuturesApi.md#get_depth_v1) | **GET** /dapi/v1/depth | Order Book
-[**get_exchange_info_v1**](CoinMarginedFuturesApi.md#get_exchange_info_v1) | **GET** /dapi/v1/exchangeInfo | Exchange Information
-[**get_force_orders_v1**](CoinMarginedFuturesApi.md#get_force_orders_v1) | **GET** /dapi/v1/forceOrders | User's Force Orders(USER_DATA)
-[**get_funding_info_v1**](CoinMarginedFuturesApi.md#get_funding_info_v1) | **GET** /dapi/v1/fundingInfo | Get Funding Rate Info
-[**get_funding_rate_v1**](CoinMarginedFuturesApi.md#get_funding_rate_v1) | **GET** /dapi/v1/fundingRate | Get Funding Rate History of Perpetual Futures
-[**get_futures_data_basis**](CoinMarginedFuturesApi.md#get_futures_data_basis) | **GET** /futures/data/basis | Basis
-[**get_futures_data_global_long_short_account_ratio**](CoinMarginedFuturesApi.md#get_futures_data_global_long_short_account_ratio) | **GET** /futures/data/globalLongShortAccountRatio | Long/Short Ratio
-[**get_futures_data_open_interest_hist**](CoinMarginedFuturesApi.md#get_futures_data_open_interest_hist) | **GET** /futures/data/openInterestHist | Open Interest Statistics
-[**get_futures_data_taker_buy_sell_vol**](CoinMarginedFuturesApi.md#get_futures_data_taker_buy_sell_vol) | **GET** /futures/data/takerBuySellVol | Taker Buy/Sell Volume
-[**get_futures_data_top_long_short_account_ratio**](CoinMarginedFuturesApi.md#get_futures_data_top_long_short_account_ratio) | **GET** /futures/data/topLongShortAccountRatio | Top Trader Long/Short Ratio (Accounts)
-[**get_futures_data_top_long_short_position_ratio**](CoinMarginedFuturesApi.md#get_futures_data_top_long_short_position_ratio) | **GET** /futures/data/topLongShortPositionRatio | Top Trader Long/Short Ratio (Positions)
-[**get_historical_trades_v1**](CoinMarginedFuturesApi.md#get_historical_trades_v1) | **GET** /dapi/v1/historicalTrades | Old Trades Lookup(MARKET_DATA)
-[**get_income_asyn_id_v1**](CoinMarginedFuturesApi.md#get_income_asyn_id_v1) | **GET** /dapi/v1/income/asyn/id | Get Futures Transaction History Download Link by Id (USER_DATA)
-[**get_income_asyn_v1**](CoinMarginedFuturesApi.md#get_income_asyn_v1) | **GET** /dapi/v1/income/asyn | Get Download Id For Futures Transaction History(USER_DATA)
-[**get_income_v1**](CoinMarginedFuturesApi.md#get_income_v1) | **GET** /dapi/v1/income | Get Income History(USER_DATA)
-[**get_index_price_klines_v1**](CoinMarginedFuturesApi.md#get_index_price_klines_v1) | **GET** /dapi/v1/indexPriceKlines | Index Price Kline/Candlestick Data
-[**get_klines_v1**](CoinMarginedFuturesApi.md#get_klines_v1) | **GET** /dapi/v1/klines | Kline/Candlestick Data
-[**get_leverage_bracket_v1**](CoinMarginedFuturesApi.md#get_leverage_bracket_v1) | **GET** /dapi/v1/leverageBracket | Notional Bracket for Pair(USER_DATA)
-[**get_leverage_bracket_v2**](CoinMarginedFuturesApi.md#get_leverage_bracket_v2) | **GET** /dapi/v2/leverageBracket | Notional Bracket for Symbol(USER_DATA)
-[**get_mark_price_klines_v1**](CoinMarginedFuturesApi.md#get_mark_price_klines_v1) | **GET** /dapi/v1/markPriceKlines | Mark Price Kline/Candlestick Data
-[**get_open_interest_v1**](CoinMarginedFuturesApi.md#get_open_interest_v1) | **GET** /dapi/v1/openInterest | Open Interest
-[**get_open_order_v1**](CoinMarginedFuturesApi.md#get_open_order_v1) | **GET** /dapi/v1/openOrder | Query Current Open Order(USER_DATA)
-[**get_open_orders_v1**](CoinMarginedFuturesApi.md#get_open_orders_v1) | **GET** /dapi/v1/openOrders | Current All Open Orders (USER_DATA)
-[**get_order_amendment_v1**](CoinMarginedFuturesApi.md#get_order_amendment_v1) | **GET** /dapi/v1/orderAmendment | Get Order Modify History (USER_DATA)
-[**get_order_asyn_id_v1**](CoinMarginedFuturesApi.md#get_order_asyn_id_v1) | **GET** /dapi/v1/order/asyn/id | Get Futures Order History Download Link by Id (USER_DATA)
-[**get_order_asyn_v1**](CoinMarginedFuturesApi.md#get_order_asyn_v1) | **GET** /dapi/v1/order/asyn | Get Download Id For Futures Order History (USER_DATA)
-[**get_order_v1**](CoinMarginedFuturesApi.md#get_order_v1) | **GET** /dapi/v1/order | Query Order (USER_DATA)
-[**get_ping_v1**](CoinMarginedFuturesApi.md#get_ping_v1) | **GET** /dapi/v1/ping | Test Connectivity
-[**get_pm_account_info_v1**](CoinMarginedFuturesApi.md#get_pm_account_info_v1) | **GET** /dapi/v1/pmAccountInfo | Classic Portfolio Margin Account Information (USER_DATA)
-[**get_position_margin_history_v1**](CoinMarginedFuturesApi.md#get_position_margin_history_v1) | **GET** /dapi/v1/positionMargin/history | Get Position Margin Change History(TRADE)
-[**get_position_risk_v1**](CoinMarginedFuturesApi.md#get_position_risk_v1) | **GET** /dapi/v1/positionRisk | Position Information(USER_DATA)
-[**get_position_side_dual_v1**](CoinMarginedFuturesApi.md#get_position_side_dual_v1) | **GET** /dapi/v1/positionSide/dual | Get Current Position Mode(USER_DATA)
-[**get_premium_index_klines_v1**](CoinMarginedFuturesApi.md#get_premium_index_klines_v1) | **GET** /dapi/v1/premiumIndexKlines | Premium index Kline Data
-[**get_premium_index_v1**](CoinMarginedFuturesApi.md#get_premium_index_v1) | **GET** /dapi/v1/premiumIndex | Index Price and Mark Price
-[**get_ticker24hr_v1**](CoinMarginedFuturesApi.md#get_ticker24hr_v1) | **GET** /dapi/v1/ticker/24hr | 24hr Ticker Price Change Statistics
-[**get_ticker_book_ticker_v1**](CoinMarginedFuturesApi.md#get_ticker_book_ticker_v1) | **GET** /dapi/v1/ticker/bookTicker | Symbol Order Book Ticker
-[**get_ticker_price_v1**](CoinMarginedFuturesApi.md#get_ticker_price_v1) | **GET** /dapi/v1/ticker/price | Symbol Price Ticker
-[**get_time_v1**](CoinMarginedFuturesApi.md#get_time_v1) | **GET** /dapi/v1/time | Check Server time
-[**get_trade_asyn_id_v1**](CoinMarginedFuturesApi.md#get_trade_asyn_id_v1) | **GET** /dapi/v1/trade/asyn/id | Get Futures Trade Download Link by Id(USER_DATA)
-[**get_trade_asyn_v1**](CoinMarginedFuturesApi.md#get_trade_asyn_v1) | **GET** /dapi/v1/trade/asyn | Get Download Id For Futures Trade History (USER_DATA)
-[**get_trades_v1**](CoinMarginedFuturesApi.md#get_trades_v1) | **GET** /dapi/v1/trades | Recent Trades List
-[**get_user_trades_v1**](CoinMarginedFuturesApi.md#get_user_trades_v1) | **GET** /dapi/v1/userTrades | Account Trade List (USER_DATA)
-[**update_batch_orders_v1**](CoinMarginedFuturesApi.md#update_batch_orders_v1) | **PUT** /dapi/v1/batchOrders | Modify Multiple Orders(TRADE)
-[**update_listen_key_v1**](CoinMarginedFuturesApi.md#update_listen_key_v1) | **PUT** /dapi/v1/listenKey | Keepalive User Data Stream (USER_STREAM)
-[**update_order_v1**](CoinMarginedFuturesApi.md#update_order_v1) | **PUT** /dapi/v1/order | Modify Order (TRADE)
+[**create_batch_orders_v1**](FuturesApi.md#create_batch_orders_v1) | **POST** /dapi/v1/batchOrders | Place Multiple Orders(TRADE)
+[**create_countdown_cancel_all_v1**](FuturesApi.md#create_countdown_cancel_all_v1) | **POST** /dapi/v1/countdownCancelAll | Auto-Cancel All Open Orders (TRADE)
+[**create_leverage_v1**](FuturesApi.md#create_leverage_v1) | **POST** /dapi/v1/leverage | Change Initial Leverage (TRADE)
+[**create_listen_key_v1**](FuturesApi.md#create_listen_key_v1) | **POST** /dapi/v1/listenKey | Start User Data Stream (USER_STREAM)
+[**create_margin_type_v1**](FuturesApi.md#create_margin_type_v1) | **POST** /dapi/v1/marginType | Change Margin Type (TRADE)
+[**create_order_v1**](FuturesApi.md#create_order_v1) | **POST** /dapi/v1/order | New Order (TRADE)
+[**create_position_margin_v1**](FuturesApi.md#create_position_margin_v1) | **POST** /dapi/v1/positionMargin | Modify Isolated Position Margin(TRADE)
+[**create_position_side_dual_v1**](FuturesApi.md#create_position_side_dual_v1) | **POST** /dapi/v1/positionSide/dual | Change Position Mode(TRADE)
+[**delete_all_open_orders_v1**](FuturesApi.md#delete_all_open_orders_v1) | **DELETE** /dapi/v1/allOpenOrders | Cancel All Open Orders(TRADE)
+[**delete_batch_orders_v1**](FuturesApi.md#delete_batch_orders_v1) | **DELETE** /dapi/v1/batchOrders | Cancel Multiple Orders(TRADE)
+[**delete_listen_key_v1**](FuturesApi.md#delete_listen_key_v1) | **DELETE** /dapi/v1/listenKey | Close User Data Stream(USER_STREAM)
+[**delete_order_v1**](FuturesApi.md#delete_order_v1) | **DELETE** /dapi/v1/order | Cancel Order (TRADE)
+[**get_account_v1**](FuturesApi.md#get_account_v1) | **GET** /dapi/v1/account | Account Information (USER_DATA)
+[**get_adl_quantile_v1**](FuturesApi.md#get_adl_quantile_v1) | **GET** /dapi/v1/adlQuantile | Position ADL Quantile Estimation(USER_DATA)
+[**get_agg_trades_v1**](FuturesApi.md#get_agg_trades_v1) | **GET** /dapi/v1/aggTrades | Compressed/Aggregate Trades List
+[**get_all_orders_v1**](FuturesApi.md#get_all_orders_v1) | **GET** /dapi/v1/allOrders | All Orders (USER_DATA)
+[**get_balance_v1**](FuturesApi.md#get_balance_v1) | **GET** /dapi/v1/balance | Futures Account Balance (USER_DATA)
+[**get_commission_rate_v1**](FuturesApi.md#get_commission_rate_v1) | **GET** /dapi/v1/commissionRate | User Commission Rate (USER_DATA)
+[**get_constituents_v1**](FuturesApi.md#get_constituents_v1) | **GET** /dapi/v1/constituents | Query Index Price Constituents
+[**get_continuous_klines_v1**](FuturesApi.md#get_continuous_klines_v1) | **GET** /dapi/v1/continuousKlines | Continuous Contract Kline/Candlestick Data
+[**get_depth_v1**](FuturesApi.md#get_depth_v1) | **GET** /dapi/v1/depth | Order Book
+[**get_exchange_info_v1**](FuturesApi.md#get_exchange_info_v1) | **GET** /dapi/v1/exchangeInfo | Exchange Information
+[**get_force_orders_v1**](FuturesApi.md#get_force_orders_v1) | **GET** /dapi/v1/forceOrders | User's Force Orders(USER_DATA)
+[**get_funding_info_v1**](FuturesApi.md#get_funding_info_v1) | **GET** /dapi/v1/fundingInfo | Get Funding Rate Info
+[**get_funding_rate_v1**](FuturesApi.md#get_funding_rate_v1) | **GET** /dapi/v1/fundingRate | Get Funding Rate History of Perpetual Futures
+[**get_futures_data_basis**](FuturesApi.md#get_futures_data_basis) | **GET** /futures/data/basis | Basis
+[**get_futures_data_global_long_short_account_ratio**](FuturesApi.md#get_futures_data_global_long_short_account_ratio) | **GET** /futures/data/globalLongShortAccountRatio | Long/Short Ratio
+[**get_futures_data_open_interest_hist**](FuturesApi.md#get_futures_data_open_interest_hist) | **GET** /futures/data/openInterestHist | Open Interest Statistics
+[**get_futures_data_taker_buy_sell_vol**](FuturesApi.md#get_futures_data_taker_buy_sell_vol) | **GET** /futures/data/takerBuySellVol | Taker Buy/Sell Volume
+[**get_futures_data_top_long_short_account_ratio**](FuturesApi.md#get_futures_data_top_long_short_account_ratio) | **GET** /futures/data/topLongShortAccountRatio | Top Trader Long/Short Ratio (Accounts)
+[**get_futures_data_top_long_short_position_ratio**](FuturesApi.md#get_futures_data_top_long_short_position_ratio) | **GET** /futures/data/topLongShortPositionRatio | Top Trader Long/Short Ratio (Positions)
+[**get_historical_trades_v1**](FuturesApi.md#get_historical_trades_v1) | **GET** /dapi/v1/historicalTrades | Old Trades Lookup(MARKET_DATA)
+[**get_income_asyn_id_v1**](FuturesApi.md#get_income_asyn_id_v1) | **GET** /dapi/v1/income/asyn/id | Get Futures Transaction History Download Link by Id (USER_DATA)
+[**get_income_asyn_v1**](FuturesApi.md#get_income_asyn_v1) | **GET** /dapi/v1/income/asyn | Get Download Id For Futures Transaction History(USER_DATA)
+[**get_income_v1**](FuturesApi.md#get_income_v1) | **GET** /dapi/v1/income | Get Income History(USER_DATA)
+[**get_index_price_klines_v1**](FuturesApi.md#get_index_price_klines_v1) | **GET** /dapi/v1/indexPriceKlines | Index Price Kline/Candlestick Data
+[**get_klines_v1**](FuturesApi.md#get_klines_v1) | **GET** /dapi/v1/klines | Kline/Candlestick Data
+[**get_leverage_bracket_v1**](FuturesApi.md#get_leverage_bracket_v1) | **GET** /dapi/v1/leverageBracket | Notional Bracket for Pair(USER_DATA)
+[**get_leverage_bracket_v2**](FuturesApi.md#get_leverage_bracket_v2) | **GET** /dapi/v2/leverageBracket | Notional Bracket for Symbol(USER_DATA)
+[**get_mark_price_klines_v1**](FuturesApi.md#get_mark_price_klines_v1) | **GET** /dapi/v1/markPriceKlines | Mark Price Kline/Candlestick Data
+[**get_open_interest_v1**](FuturesApi.md#get_open_interest_v1) | **GET** /dapi/v1/openInterest | Open Interest
+[**get_open_order_v1**](FuturesApi.md#get_open_order_v1) | **GET** /dapi/v1/openOrder | Query Current Open Order(USER_DATA)
+[**get_open_orders_v1**](FuturesApi.md#get_open_orders_v1) | **GET** /dapi/v1/openOrders | Current All Open Orders (USER_DATA)
+[**get_order_amendment_v1**](FuturesApi.md#get_order_amendment_v1) | **GET** /dapi/v1/orderAmendment | Get Order Modify History (USER_DATA)
+[**get_order_asyn_id_v1**](FuturesApi.md#get_order_asyn_id_v1) | **GET** /dapi/v1/order/asyn/id | Get Futures Order History Download Link by Id (USER_DATA)
+[**get_order_asyn_v1**](FuturesApi.md#get_order_asyn_v1) | **GET** /dapi/v1/order/asyn | Get Download Id For Futures Order History (USER_DATA)
+[**get_order_v1**](FuturesApi.md#get_order_v1) | **GET** /dapi/v1/order | Query Order (USER_DATA)
+[**get_ping_v1**](FuturesApi.md#get_ping_v1) | **GET** /dapi/v1/ping | Test Connectivity
+[**get_pm_account_info_v1**](FuturesApi.md#get_pm_account_info_v1) | **GET** /dapi/v1/pmAccountInfo | Classic Portfolio Margin Account Information (USER_DATA)
+[**get_position_margin_history_v1**](FuturesApi.md#get_position_margin_history_v1) | **GET** /dapi/v1/positionMargin/history | Get Position Margin Change History(TRADE)
+[**get_position_risk_v1**](FuturesApi.md#get_position_risk_v1) | **GET** /dapi/v1/positionRisk | Position Information(USER_DATA)
+[**get_position_side_dual_v1**](FuturesApi.md#get_position_side_dual_v1) | **GET** /dapi/v1/positionSide/dual | Get Current Position Mode(USER_DATA)
+[**get_premium_index_klines_v1**](FuturesApi.md#get_premium_index_klines_v1) | **GET** /dapi/v1/premiumIndexKlines | Premium index Kline Data
+[**get_premium_index_v1**](FuturesApi.md#get_premium_index_v1) | **GET** /dapi/v1/premiumIndex | Index Price and Mark Price
+[**get_ticker24hr_v1**](FuturesApi.md#get_ticker24hr_v1) | **GET** /dapi/v1/ticker/24hr | 24hr Ticker Price Change Statistics
+[**get_ticker_book_ticker_v1**](FuturesApi.md#get_ticker_book_ticker_v1) | **GET** /dapi/v1/ticker/bookTicker | Symbol Order Book Ticker
+[**get_ticker_price_v1**](FuturesApi.md#get_ticker_price_v1) | **GET** /dapi/v1/ticker/price | Symbol Price Ticker
+[**get_time_v1**](FuturesApi.md#get_time_v1) | **GET** /dapi/v1/time | Check Server time
+[**get_trade_asyn_id_v1**](FuturesApi.md#get_trade_asyn_id_v1) | **GET** /dapi/v1/trade/asyn/id | Get Futures Trade Download Link by Id(USER_DATA)
+[**get_trade_asyn_v1**](FuturesApi.md#get_trade_asyn_v1) | **GET** /dapi/v1/trade/asyn | Get Download Id For Futures Trade History (USER_DATA)
+[**get_trades_v1**](FuturesApi.md#get_trades_v1) | **GET** /dapi/v1/trades | Recent Trades List
+[**get_user_trades_v1**](FuturesApi.md#get_user_trades_v1) | **GET** /dapi/v1/userTrades | Account Trade List (USER_DATA)
+[**update_batch_orders_v1**](FuturesApi.md#update_batch_orders_v1) | **PUT** /dapi/v1/batchOrders | Modify Multiple Orders(TRADE)
+[**update_listen_key_v1**](FuturesApi.md#update_listen_key_v1) | **PUT** /dapi/v1/listenKey | Keepalive User Data Stream (USER_STREAM)
+[**update_order_v1**](FuturesApi.md#update_order_v1) | **PUT** /dapi/v1/order | Modify Order (TRADE)
 
 
 

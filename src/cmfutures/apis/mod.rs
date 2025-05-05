@@ -123,7 +123,7 @@ impl From<&str> for ContentType {
     }
 }
 
-pub mod coin_margined_futures_api;
+pub mod futures_api;
 
 pub mod signing;
 pub mod configuration;

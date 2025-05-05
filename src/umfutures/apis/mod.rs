@@ -124,7 +124,7 @@ impl From<&str> for ContentType {
 }
 
 pub mod binance_link_api;
-pub mod usds_margined_futures_api;
+pub mod futures_api;
 
 pub mod signing;
 pub mod configuration;

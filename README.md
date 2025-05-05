@@ -81,9 +81,9 @@ async fn test_umfutures() {
     let mut config = umfutures::Configuration::new();
     config.binance_auth = Some(auth);
 
-    match umfutures::usds_margined_futures_api::get_klines_v1(
+    match umfutures::futures_api::get_klines_v1(
         &config,
-        umfutures::usds_margined_futures_api::GetKlinesV1Params {
+        umfutures::futures_api::GetKlinesV1Params {
             symbol: "BTCUSDT".to_string(),
             interval: "1h".to_string(),
             ..Default::default()
