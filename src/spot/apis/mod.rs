@@ -125,13 +125,25 @@ impl From<&str> for ContentType {
 
 pub mod algo_trading_api;
 pub mod binance_link_api;
+pub mod binance_pay_history_api;
+pub mod c2c_api;
 pub mod convert_api;
 pub mod copy_trading_api;
+pub mod crypto_loan_api;
+pub mod dual_investment_api;
+pub mod fiat_api;
 pub mod futures_data_api;
+pub mod gift_card_api;
 pub mod margin_trading_api;
+pub mod mining_api;
+pub mod nft_api;
 pub mod portfolio_margin_pro_api;
+pub mod rebate_api;
+pub mod simple_earn_api;
 pub mod spot_trading_api;
+pub mod staking_api;
 pub mod sub_account_api;
+pub mod vip_loan_api;
 pub mod wallet_api;
 
 pub mod signing;
